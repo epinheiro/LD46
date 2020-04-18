@@ -127,4 +127,15 @@ public class EnemyController : MonoBehaviour
     public void SetPlayerDetection(bool isDetected){
         playerTracker.PlayerDetected  = isDetected;
     }
+
+    void OnTriggerEnter(Collider other){
+        if(other.tag == "Player"){
+            Time.timeScale = 0;
+            CaughtPlayerEvent();
+        }
+    }
+
+    void CaughtPlayerEvent(){
+        Debug.Log(string.Format("Enemy {0} caught player", this.name));
+    }
 }
