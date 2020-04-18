@@ -4,45 +4,27 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [Range(1, 15)] public float moveSpeed = 15f;
+    [Range(1, 100)] public float moveSpeed = 15f;
 
     // Object hierarchy from ROUTE POINTS
-    public GameObject routeGameObject;
+    public RouteController route;
 
-    Vector3[] route;
-    int currentRoutePoint;
+
     
     // Start is called before the first frame update
     void Start()
     {
-        SetRoutePoints();
+        route = route.GetComponent<RouteController>();
+        route.SetupRoute();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(Vector3.Distance(this.transform.position, route[currentRoutePoint])) > 0.1f) {
-            transform.position = Vector3.MoveTowards(this.transform.position, route[currentRoutePoint], moveSpeed * Time.deltaTime);
+        if ( Mathf.Abs( Vector3.Distance(this.transform.position, route.GetCurrentRoutePoint() ) ) > 0.1f ) {
+            transform.position = Vector3.MoveTowards(this.transform.position, route.GetCurrentRoutePoint(), moveSpeed * Time.deltaTime);
         } else {
-            IncreaseRoutePointCount();
+            route.NextRoutePoint();
         }
-    }
-
-    void SetRoutePoints() {
-        int childCount = routeGameObject.transform.childCount;
-
-        route = new Vector3[childCount];
-        
-        for ( int i=0; i<childCount; i++ ) {
-            route[i] = routeGameObject.transform.GetChild(i).transform.position;
-        }
-
-        currentRoutePoint = 0;
-    }
-    
-    void IncreaseRoutePointCount() {
-        int childCount = routeGameObject.transform.childCount;
-
-        currentRoutePoint = (currentRoutePoint + 1) % childCount;
     }
 }
