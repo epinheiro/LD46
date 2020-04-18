@@ -11,14 +11,14 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         Move();
     }
 
     private void Move() {
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
-        transform.Translate(CalculateSpeed(horizontal), 0, CalculateSpeed(vertical));
+        GetComponent<Rigidbody>().transform.Translate(CalculateSpeed(horizontal), 0, CalculateSpeed(vertical));
     }
 
     private float CalculateSpeed(float direction) {
