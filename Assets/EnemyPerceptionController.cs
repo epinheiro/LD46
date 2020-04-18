@@ -34,16 +34,13 @@ public class EnemyPerceptionController : MonoBehaviour
     }
 
     bool CheckPlayerVisibility(Collider player){
-        this.GetComponent<MeshCollider>().enabled = false;
-
         RaycastHit hit;
 
         Vector3 direction = player.transform.position - this.transform.position;
-        Physics.Raycast(this.transform.position, direction, out hit, Mathf.Infinity);
+        float distance = Vector3.Distance(player.transform.position, this.transform.position);
+        Physics.Raycast(this.transform.position, direction, out hit, distance);
 
-        this.GetComponent<MeshCollider>().enabled = true;
-
-        if(hit.collider.tag == player.tag){
+        if(hit.collider != null && hit.collider.tag == player.tag){
             Debug.DrawLine(this.transform.position, player.transform.position, Color.blue);
             return true;
         }
