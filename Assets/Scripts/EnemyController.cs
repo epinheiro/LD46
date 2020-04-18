@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -46,17 +46,36 @@ public class EnemyController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(playerTracker.PlayerDetected){
-            State = EnemyState.State.Pursuit;
-            agent.destination = playerTracker.GetPlayerPosition();
-        }else{
-            State = EnemyState.State.Patrol;
-            if ( Mathf.Abs( Vector3.Distance(this.transform.position, route.GetCurrentRoutePoint() ) ) > 0.1f ) {
-                agent.destination = route.GetCurrentRoutePoint();
-            } else {
-                route.NextRoutePoint();
+    void Update(){
+        if(!isPursuing){
+            if(!playerTracker.PlayerDetected){
+                // Patrolling
+                State = EnemyState.State.Patrol;
+                if ( Mathf.Abs( Vector3.Distance(this.transform.position, route.GetCurrentRoutePoint() ) ) > 1f ) {
+                    agent.destination = route.GetCurrentRoutePoint();
+                } else {
+                    route.NextRoutePoint();
+                }
+            }else{
+                // Begin pursuit
+                isPursuing = true;
+            }
+        }else{ // Pursuit!
+            if(playerTracker.PlayerDetected){
+                if(currentBehaviour != null){
+                    // Continue Pursuit case
+                    StopCoroutine(currentBehaviour);
+                    currentBehaviour = null;
+                }
+                State = EnemyState.State.Pursuit;
+                agent.destination = playerTracker.GetPlayerPosition();
+            }else{
+                if(currentBehaviour == null){
+                    // Begin close search
+                    agent.destination = this.transform.position;
+                    State = EnemyState.State.CloseSearch;
+                    currentBehaviour = StartCoroutine(CloseSearchPlayerBehaviour());
+                }
             }
         }
     }

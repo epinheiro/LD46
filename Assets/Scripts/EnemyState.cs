@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyState
 {
-    public enum State {Patrol, Pursuit};
+    public enum State {Patrol, Pursuit, CloseSearch};
 
     public float moveSpeed;
     public float angularSpeed;
@@ -27,7 +27,11 @@ public class EnemyState
                 break;
 
             case State.Pursuit:
-                SetUpStruct(35, 720, new Vector3(2,2,6));
+                SetUpStruct(35, 1440, new Vector3(2,2,6));
+                break;
+
+            case State.CloseSearch:
+                SetUpStruct(10, 720, new Vector3(10,5,4.5f));
                 break;
 
             default:
