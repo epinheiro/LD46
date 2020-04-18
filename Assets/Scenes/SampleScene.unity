@@ -334,6 +334,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DrawnRouteLine: 1
+--- !u!1 &1238642668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7675266603230905957, guid: f1fb8f82ab07bba4d87d538db17e25ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 1625763938}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1238642669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238642668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12415514bcfd67644b2885606e21b098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugLines: 0
+  player: {fileID: 0}
 --- !u!1 &1536030499
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +465,7 @@ PrefabInstance:
     - target: {fileID: 7675266603230905977, guid: f1fb8f82ab07bba4d87d538db17e25ac,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -16.9
       objectReference: {fileID: 0}
     - target: {fileID: 7675266603230905977, guid: f1fb8f82ab07bba4d87d538db17e25ac,
         type: 3}
@@ -569,6 +589,11 @@ PrefabInstance:
     - target: {fileID: 3905832446401576013, guid: 1ec24a0e5da18e24a98fb1037a1cdd09,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905832446401576013, guid: 1ec24a0e5da18e24a98fb1037a1cdd09,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []

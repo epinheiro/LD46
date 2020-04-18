@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemyPerceptionController : MonoBehaviour
 {
+    EnemyController enemy;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemy = transform.parent.GetComponent<EnemyController>();
     }
 
     // Update is called once per frame
@@ -17,6 +19,14 @@ public class EnemyPerceptionController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        Debug.Log(string.Format("Collision with {0} detected", other.gameObject.name));
+        if(other.tag == "Player"){
+            enemy.SetPlayerDetection(true);
+        }
+    }
+
+    void OnTriggerExit(Collider other){
+        if(other.tag == "Player"){
+            enemy.SetPlayerDetection(false);
+        }
     }
 }
