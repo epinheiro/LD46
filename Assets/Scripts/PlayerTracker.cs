@@ -27,7 +27,5 @@ public class PlayerTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Color trackerColor = isPlayerDetected ? Color.blue : Color.red;
-        Debug.DrawLine(this.transform.position, GetPlayerPosition(), trackerColor);
     }
 }

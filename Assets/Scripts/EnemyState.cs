@@ -23,15 +23,15 @@ public class EnemyState
     public EnemyState (State state){
         switch(state){
             case State.Patrol:
-                SetUpStruct(25, 180, Vector3.one * 3);
+                SetUpStruct(20, 360, Vector3.one * 300);
                 break;
 
             case State.Pursuit:
-                SetUpStruct(35, 1440, new Vector3(2,2,6));
+                SetUpStruct(25, 1440, new Vector3(200,200,600));
                 break;
 
             case State.CloseSearch:
-                SetUpStruct(10, 720, new Vector3(10,5,4.5f));
+                SetUpStruct(10, 720, new Vector3(1000,500,450f));
                 break;
 
             default:
