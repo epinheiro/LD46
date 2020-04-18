@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    [Range(1,15)] public float moveSpeed = 2.0f;
+    [Range(1, 100)] public float moveSpeed = 40f;
 
     // Start is called before the first frame update
     void Start() {

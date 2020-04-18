@@ -1,48 +1,130 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    [Range(1, 15)] public float moveSpeed = 15f;
+    Dictionary<EnemyState.State, EnemyState> statesDict;
+    EnemyState.State currentState;
+    public EnemyState.State State{
+        get { return currentState; }
+        set {
+            if(value != currentState){
+                currentState = value;
+                ChangeStateAttributes(value);
+            }
+        }
+    }
+
+    [Range(1, 100)] public float moveSpeed = 30f;
+    [Range(1, 360)] public float angularSpeed = 360;
 
     // Object hierarchy from ROUTE POINTS
-    public GameObject routeGameObject;
+    public RouteController route;
 
-    Vector3[] route;
-    int currentRoutePoint;
-    
+    NavMeshAgent agent;
+    PlayerTracker playerTracker;
+    EnemyPerceptionController perception;
+    bool isPursuing = false;
+    Coroutine currentBehaviour;
+
     // Start is called before the first frame update
     void Start()
     {
-        SetRoutePoints();
+        perception = transform.Find("VisionCone").GetComponent<EnemyPerceptionController>();
+
+        statesDict = EnemyState.GetStatesDictionary();
+        currentState = EnemyState.State.Patrol;
+
+        route = route.GetComponent<RouteController>();
+        route.SetupRoute();
+
+        SetupNavMeshAgent();
+
+        playerTracker = this.GetComponent<PlayerTracker>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Mathf.Abs(Vector3.Distance(this.transform.position, route[currentRoutePoint])) > 0.1f) {
-            transform.position = Vector3.MoveTowards(this.transform.position, route[currentRoutePoint], moveSpeed * Time.deltaTime);
-        } else {
-            IncreaseRoutePointCount();
+    void Update(){
+        if(!isPursuing){
+            if(!playerTracker.PlayerDetected){
+                // Patrolling
+                State = EnemyState.State.Patrol;
+                if ( Mathf.Abs( Vector3.Distance(this.transform.position, route.GetCurrentRoutePoint() ) ) > 1f ) {
+                    agent.destination = route.GetCurrentRoutePoint();
+                } else {
+                    route.NextRoutePoint();
+                }
+            }else{
+                // Begin pursuit
+                isPursuing = true;
+            }
+        }else{ // Pursuit!
+            if(playerTracker.PlayerDetected){
+                if(currentBehaviour != null){
+                    // Continue Pursuit case
+                    StopCoroutine(currentBehaviour);
+                    currentBehaviour = null;
+                }
+                State = EnemyState.State.Pursuit;
+                agent.destination = playerTracker.GetPlayerPosition();
+            }else{
+                if(currentBehaviour == null){
+                    // Begin close search
+                    agent.destination = this.transform.position;
+                    State = EnemyState.State.CloseSearch;
+                    currentBehaviour = StartCoroutine(CloseSearchPlayerBehaviour());
+                }
+            }
         }
     }
 
-    void SetRoutePoints() {
-        int childCount = routeGameObject.transform.childCount;
+    IEnumerator CloseSearchPlayerBehaviour(float searchAngle = 90, float time = 1.5f){
+        // Return a random integer number between min [inclusive] and max [EXCLUSIVE] (Read Only).
+        int startingSide = Random.Range(0,2) == 0 ? -1 : 1; // Random between 0 and 1
 
-        route = new Vector3[childCount];
-        
-        for ( int i=0; i<childCount; i++ ) {
-            route[i] = routeGameObject.transform.GetChild(i).transform.position;
+        float hardcodedTimeStep = 0.01f;
+
+        float rotateStep = (3*searchAngle*startingSide)/(time/hardcodedTimeStep);
+
+        float timeCount = 0;
+
+        while(timeCount < time/3){
+            yield return CloseSearchRotationLogic(ref timeCount, hardcodedTimeStep, rotateStep);
         }
 
-        currentRoutePoint = 0;
-    }
-    
-    void IncreaseRoutePointCount() {
-        int childCount = routeGameObject.transform.childCount;
+        while(timeCount < time){
+            yield return CloseSearchRotationLogic(ref timeCount, hardcodedTimeStep, -rotateStep);
+        }
 
-        currentRoutePoint = (currentRoutePoint + 1) % childCount;
+        isPursuing = false;
+    }
+
+    WaitForSeconds CloseSearchRotationLogic(ref float timeCount, float timeStep, float rotateStep){
+        timeCount += timeStep;
+
+        this.transform.Rotate(Vector3.up, -rotateStep, Space.Self);
+
+        return new WaitForSeconds(timeStep);
+    }
+
+    void ChangeStateAttributes(EnemyState.State nextState){
+        EnemyState data;
+        statesDict.TryGetValue(nextState, out data);
+        moveSpeed = data.moveSpeed;
+        angularSpeed = data.angularSpeed;
+
+        perception.ChangeConeScale(data.visibilityConeScale);
+    }
+
+    void SetupNavMeshAgent(){
+        agent = this.GetComponent<NavMeshAgent>();
+        agent.speed = moveSpeed;
+        agent.angularSpeed = angularSpeed;
+    }
+
+    public void SetPlayerDetection(bool isDetected){
+        playerTracker.PlayerDetected  = isDetected;
     }
 }
