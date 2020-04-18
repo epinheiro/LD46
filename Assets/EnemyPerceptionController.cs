@@ -28,20 +28,21 @@ public class EnemyPerceptionController : MonoBehaviour
     }
 
     void OnTriggerExit(Collider other){
+        Debug.Log("Trigger exiting");
         if(other.tag == "Player"){
             enemy.SetPlayerDetection(false);
         }
     }
 
     bool CheckPlayerVisibility(Collider player){
-        this.GetComponent<MeshCollider>().enabled = false;
+        //this.GetComponent<MeshCollider>().enabled = false;
 
         RaycastHit hit;
 
         Vector3 direction = player.transform.position - this.transform.position;
         Physics.Raycast(this.transform.position, direction, out hit, Mathf.Infinity);
 
-        this.GetComponent<MeshCollider>().enabled = true;
+//        this.GetComponent<MeshCollider>().enabled = true;
 
         if(hit.collider.tag == player.tag){
             Debug.DrawLine(this.transform.position, player.transform.position, Color.blue);
