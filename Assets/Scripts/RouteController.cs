@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RouteController : MonoBehaviour
 {
+    public bool DrawnRouteLine = true;
+
     Vector3[] route;
     int currentRoutePoint;
 
@@ -29,5 +31,13 @@ public class RouteController : MonoBehaviour
         currentRoutePoint = (currentRoutePoint + 1) % childCount;
 
         return GetCurrentRoutePoint();
+    }
+
+    void Update(){
+        int routeLenght = route.Length;
+
+        for( int i=0; i<routeLenght; i++){
+            Debug.DrawLine(route[i], route[(i+1)%routeLenght], Color.red);
+        }
     }
 }
