@@ -1,0 +1,36 @@
+{
+    "sequences" : [
+        {
+            "id": "introBida",
+            "dialogs": [
+                {
+                    "id" : "Bida-beginingToTalk" ,
+                    "character" : {
+                        "name": "Bida",
+                        "mood": "serious"
+                    },
+                    "text": "I am very serious",
+                    "nextId": "Bida-MidTalk"
+                },
+                { 
+                    "id" : "Bida-MidTalk",
+                    "character" : {
+                        "name": "Bida",
+                        "mood": "sad"
+                    },
+                    "text": "I am very sad",
+                    "nextId": "Bida-endSpeech"
+                },
+                { 
+                    "id" : "Bida-endSpeech",
+                    "character" : {
+                        "name": "Bida",
+                        "mood": "happy"
+                    },
+                    "text": "That IS IT"
+                } 
+            ]
+        }
+        
+    ]
+}
