@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Cinemachine;
 
 public class EnemyController : MonoBehaviour
 {
@@ -28,6 +29,11 @@ public class EnemyController : MonoBehaviour
     EnemyPerceptionController perception;
     bool isPursuing = false;
     Coroutine currentBehaviour;
+    private PlayerController player;
+    private bool stopped = false;
+    private CinemachineVirtualCamera virtualCamera;
+    private Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,24 +43,37 @@ public class EnemyController : MonoBehaviour
         statesDict = EnemyState.GetStatesDictionary();
         currentState = EnemyState.State.Patrol;
 
-        route = route.GetComponent<RouteController>();
         route.SetupRoute();
 
         SetupNavMeshAgent();
 
         playerTracker = this.GetComponent<PlayerTracker>();
+
+        player = GameObject.FindObjectOfType<PlayerController>();
+
+        virtualCamera = gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
+
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update(){
+        if (stopped)
+        {
+            animator.Play("idle");
+            return;
+        }
         if(!isPursuing){
             if(!playerTracker.PlayerDetected){
                 // Patrolling
                 State = EnemyState.State.Patrol;
                 if ( Mathf.Abs( Vector3.Distance(this.transform.position, route.GetCurrentRoutePoint() ) ) > 1f ) {
                     agent.destination = route.GetCurrentRoutePoint();
+                    animator.Play("run");
+                    // Debug.Log("didnt reach point");
                 } else {
                     route.NextRoutePoint();
+                    //Debug.Log("reach point");
                 }
             }else{
                 // Begin pursuit
@@ -69,12 +88,15 @@ public class EnemyController : MonoBehaviour
                 }
                 State = EnemyState.State.Pursuit;
                 agent.destination = playerTracker.GetPlayerPosition();
-            }else{
+                animator.Play("charge");
+            }
+            else{
                 if(currentBehaviour == null){
                     // Begin close search
                     agent.destination = this.transform.position;
                     State = EnemyState.State.CloseSearch;
                     currentBehaviour = StartCoroutine(CloseSearchPlayerBehaviour());
+                    animator.Play("idle");
                 }
             }
         }
@@ -130,12 +152,15 @@ public class EnemyController : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if(other.tag == "Player"){
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
+            player.deactivateCharacter();
+            stopped = true;
             CaughtPlayerEvent();
         }
     }
 
     void CaughtPlayerEvent(){
         Debug.Log(string.Format("Enemy {0} caught player", this.name));
+        virtualCamera.Priority = 100;
     }
 }

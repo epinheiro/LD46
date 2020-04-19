@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Tracks:
   - {fileID: -7454868476132037192}
   - {fileID: -8717243473636845587}
+  - {fileID: 2660829322417915633}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -570,6 +571,29 @@ MonoBehaviour:
   VirtualCamera:
     exposedName: a8f3cc92de1b14e44b3d6041496edcae
     defaultValue: {fileID: 0}
+--- !u!114 &2660829322417915633
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05acc715f855ced458d76ee6f8ac6c61, type: 3}
+  m_Name: Cinemachine Track (1)
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 1
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects: []
 --- !u!114 &4935132867188761385
 MonoBehaviour:
   m_ObjectHideFlags: 1
