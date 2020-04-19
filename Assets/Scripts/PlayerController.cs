@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     private Camera theCamera;
     private Vector3 moveToPosition;
     private bool moveScene = false;
+    private bool characterActive = false;
     
 
     // Start is called before the first frame update
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour {
                 moveScene = false;
                 animator.Play("idle");
             }
-        } else
+        } else if (characterActive)
         {
             Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         }
@@ -39,6 +40,11 @@ public class PlayerController : MonoBehaviour {
 
         //transform.position = characterRigidBody.transform.position;
         //theCamera.transform.position = new Vector3(transform.position.x, theCamera.transform.position.y, transform.position.z);
+    }
+
+    public void activateCharacter ()
+    {
+        characterActive = true;
     }
 
     public bool MoveSceneValue()
@@ -50,6 +56,12 @@ public class PlayerController : MonoBehaviour {
     {
         moveToPosition = new Vector3(x, 0, z);
         moveScene = true;
+    }
+
+    public void LookAtVector3(Vector3 look)
+    {
+        look.y = 0;
+        characterTransform.LookAt(look);
     }
 
     public void Move(float horizontal, float vertical)

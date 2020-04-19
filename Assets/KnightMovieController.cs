@@ -36,6 +36,12 @@ public class KnightMovieController : MonoBehaviour
         moveScene = true;
     }
 
+    public void LookAtVector3(Vector3 look)
+    {
+        look.y = 0;
+        transform.LookAt(look);
+    }
+
     public void Move(float horizontal, float vertical)
     {
         Vector3 direction = transform.position + new Vector3(horizontal, 0, vertical);
