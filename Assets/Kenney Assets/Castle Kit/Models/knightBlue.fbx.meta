@@ -93,7 +93,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -142,7 +142,27 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: knightBlue(Clone)
+      parentName: 
+      position: {x: -26.00112, y: 6.7756533e-15, z: -108.599976}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: head 1
+      parentName: knightBlue(Clone)
+      position: {x: -0, y: 3.8999999, z: 2.1657345e-14}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.26, y: 0.26, z: 0.26}
+    - name: left 1
+      parentName: knightBlue(Clone)
+      position: {x: 1.9499999, y: 3.8999999, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: right 1
+      parentName: knightBlue(Clone)
+      position: {x: -1.9499999, y: 3.8999999, z: 6.4972035e-14}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.8584, y: 0.8584, z: 0.8584}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
