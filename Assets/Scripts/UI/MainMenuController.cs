@@ -8,19 +8,22 @@ public class MainMenuController : MonoBehaviour
 {
     GameObject mainMenuGrop;
     GameObject aboutGroup;
+    GameObject ambientSound;
     public PlayableDirector playableDirector;
-
+    
     
     void Start()
     {
         mainMenuGrop = transform.Find("MainMenuGroup").gameObject;
         aboutGroup = transform.Find("AboutGroup").gameObject;
+        ambientSound = GameObject.Find("AmbientSound").gameObject;
         aboutGroup.SetActive(false);
     }
 
     public void OnClickBeginButton(){
         Debug.LogError("NYI - Begin button pressed");
         playableDirector.Play();
+        ambientSound.GetComponent<AudioSource>().Play();
         this.gameObject.SetActive(false);
 
     }
