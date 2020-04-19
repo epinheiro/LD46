@@ -33,6 +33,12 @@ public class SceneMovieController : MonoBehaviour
         knightController.MoveTo(initialPositionKnight.position.x, initialPositionKnight.position.z);
     }
 
+    public void LookAtEachOther()
+    {
+        playerController.LookAtVector3(knightController.transform.position);
+        knightController.LookAtVector3(playerController.transform.position);
+    }
+
     // Update is called once per frame
     void Update()
     {
