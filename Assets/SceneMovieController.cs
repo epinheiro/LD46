@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class SceneMovieController : MonoBehaviour
 {
@@ -11,10 +12,22 @@ public class SceneMovieController : MonoBehaviour
     public Animator animator;
     public PlayerController playerController;
     public KnightMovieController knightController;
+    public PlayableDirector playableDirector;
     private bool wentInside = false;
 
     // Start is called before the first frame update
     void Start()
+    {
+        
+    }
+
+    public void PauseScene()
+    {
+        playableDirector.Pause();
+
+    }
+
+    public void Activate()
     {
         playerController.MoveTo(initialPositionPlayer.position.x, initialPositionPlayer.position.z);
         knightController.MoveTo(initialPositionKnight.position.x, initialPositionKnight.position.z);
