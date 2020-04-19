@@ -2,25 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
-    [Range(1, 100)] public float moveSpeed = 40f;
-    public float acceleration = 5f;
-    public Transform characterTransform;
-    private Animator animator;
-    private Camera theCamera;
+public class KnightMovieController : MonoBehaviour
+{
     private Vector3 moveToPosition;
     private bool moveScene = false;
-    
+    private Animator animator;
+    [Range(1, 100)] public float moveSpeed = 40f;
 
     // Start is called before the first frame update
-    void Start() {
-       // characterRigidBody = GetComponentInChildren<Rigidbody>();
+    void Start()
+    {
         animator = GetComponentInChildren<Animator>();
-        theCamera = GetComponentInChildren<Camera>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate() {
+    private void FixedUpdate()
+    {
         if (moveScene)
         {
             Vector3 vec = new Vector3(moveToPosition.x - transform.position.x, transform.position.y, moveToPosition.z - transform.position.z).normalized;
@@ -31,19 +27,7 @@ public class PlayerController : MonoBehaviour {
                 moveScene = false;
                 animator.Play("idle");
             }
-        } else
-        {
-            Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         }
-
-
-        //transform.position = characterRigidBody.transform.position;
-        //theCamera.transform.position = new Vector3(transform.position.x, theCamera.transform.position.y, transform.position.z);
-    }
-
-    public bool MoveSceneValue()
-    {
-        return moveScene;
     }
 
     public void MoveTo(float x, float z)
@@ -54,9 +38,10 @@ public class PlayerController : MonoBehaviour {
 
     public void Move(float horizontal, float vertical)
     {
-        Vector3 direction = characterTransform.position + new Vector3(horizontal, 0, vertical);
-        transform.Translate(CalculateSpeed(horizontal), 0, CalculateSpeed(vertical));
-        characterTransform.LookAt(direction);
+        Vector3 direction = transform.position + new Vector3(horizontal, 0, vertical);
+        transform.Translate(CalculateSpeed(horizontal), 0, CalculateSpeed(vertical), Space.World);
+        transform.LookAt(direction);
+        Debug.Log("Horitzontal: " +  horizontal + "Vertical :" + vertical);
         if (horizontal == 0 && vertical == 0)
         {
             animator.Play("idle");
@@ -67,7 +52,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private float CalculateSpeed(float direction) {
+    private float CalculateSpeed(float direction)
+    {
         return direction * moveSpeed * Time.deltaTime;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

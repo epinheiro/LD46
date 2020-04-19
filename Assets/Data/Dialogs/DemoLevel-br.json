@@ -1,34 +1,70 @@
 {
     "sequences" : [
         {
-            "id": "introBida",
+            "id": "intro",
             "dialogs": [
                 {
-                    "id" : "Bida-beginingToTalk" ,
+                    "id" : "intro-1" ,
                     "character" : {
-                        "name": "Bida",
+                        "name": "Knight",
                         "mood": "serious"
                     },
-                    "text": "I am very serious",
-                    "nextId": "Bida-MidTalk"
+                    "text": "So, I'm letting you escape for now since I know you are telling the truth",
+                    "nextId": "intro-2"
                 },
-                { 
-                    "id" : "Bida-MidTalk",
+                {
+                    "id" : "intro-2" ,
                     "character" : {
-                        "name": "Bida",
-                        "mood": "sad"
+                        "name": "Prisoner",
+                        "mood": "serious"
                     },
-                    "text": "I am very sad",
-                    "nextId": "Bida-endSpeech"
+                    "text": "Thank you for believing me. I didn't kill the peasant, it was the noble's man!",
+                    "nextId": "intro-3"
                 },
-                { 
-                    "id" : "Bida-endSpeech",
+                {
+                    "id" : "intro-3" ,
                     "character" : {
-                        "name": "Bida",
-                        "mood": "happy"
+                        "name": "Knight",
+                        "mood": "serious"
                     },
-                    "text": "That IS IT"
-                } 
+                    "text": "I know, I've seen it, but I can't tell anyone or else I will be killed for treason against the nobility.",
+                    "nextId": "intro-4"
+                },
+                {
+                    "id" : "intro-4" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "What can I do about this?",
+                    "nextId": "intro-5"
+                },
+                {
+                    "id" : "intro-5" ,
+                    "character" : {
+                        "name": "Knight",
+                        "mood": "serious"
+                    },
+                    "text": "Just flee and try to collect evidence if you can, the noble must pay for his crimes.",
+                    "nextId": "intro-6"
+                },
+                {
+                    "id" : "intro-6" ,
+                    "character" : {
+                        "name": "Knight",
+                        "mood": "serious"
+                    },
+                    "text": "Don't let the guards see you, run through the city and forest.",
+                    "nextId": "intro-7"
+                },
+                {
+                    "id" : "intro-7" ,
+                    "character" : {
+                        "name": "Knight",
+                        "mood": "serious"
+                    },
+                    "text": "Keep the truth alive!"
+                }
             ]
         }
         

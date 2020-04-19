@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class MainMenuController : MonoBehaviour
 {
     GameObject mainMenuGrop;
     GameObject aboutGroup;
+    public PlayableDirector playableDirector;
+
     
     void Start()
     {
@@ -15,7 +18,10 @@ public class MainMenuController : MonoBehaviour
     }
 
     public void OnClickBeginButton(){
-        Debug.Log("NYI - Begin button pressed");
+        Debug.LogError("NYI - Begin button pressed");
+        playableDirector.Play();
+        this.gameObject.SetActive(false);
+
     }
 
     public void OnClickOpenAboutButton(){
