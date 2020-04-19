@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class DialogController : MonoBehaviour
 {
@@ -15,10 +16,11 @@ public class DialogController : MonoBehaviour
 
 
     // Unity Scene objects
-    DialogCanvasController dialogCanvasController;
+    public DialogCanvasController dialogCanvasController;
     Sequence dialogSequence;
     GameManager gameManager;
-    GameObject playerObject;
+    //GameObject playerObject;
+    public PlayableDirector playableDirector;
 
 
     // Object setup to dialog scene
@@ -36,11 +38,11 @@ public class DialogController : MonoBehaviour
         dialogFlow = dialogSequence.GetDialogFlow();
         totalOfDialogs = dialogFlow.Count;
 
-        dialogCanvasController = GameObject.Find("DialogCanvas").GetComponent<DialogCanvasController>();
+        //dialogCanvasController = GameObject.Find("DialogCanvas").GetComponent<DialogCanvasController>();
         if (dialogCanvasController == null) throw new System.Exception("DialogCanvas game object not found in Unity scene");
 
-        playerObject = GameObject.Find("Player");
-        if (playerObject == null) throw new System.Exception("Player game object not found in Unity scene");
+        //playerObject = GameObject.Find("Player");
+        //if (playerObject == null) throw new System.Exception("Player game object not found in Unity scene");
     }
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class DialogController : MonoBehaviour
                         EraseInfluencesAndDestroyObject();
                     }else{
                         currentDialogIndex = 0;
+                        UnfocusOnDialog();
                     }
                 }
             }
@@ -65,9 +68,9 @@ public class DialogController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if (GameObject.ReferenceEquals(other.gameObject, playerObject) && isAutomatic ) {
+        //if (GameObject.ReferenceEquals(other.gameObject, playerObject) && isAutomatic ) {
             FocusOnDialog();
-        }
+        //}
     }
 
     // Posible coroutines
@@ -93,14 +96,16 @@ public class DialogController : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    void FocusOnDialog(){
+    public void FocusOnDialog(){
         dialogCanvasController.SetActive(true);
         //playerObject.GetComponent<PlayerBehavior>().AddInteractionDisabler(triggerId);
         currentState = DialogBoxStates.SendText;
+        playableDirector.Pause();
     }
 
     void UnfocusOnDialog(){
         dialogCanvasController.SetActive(false);
+        playableDirector.Play();
         //playerObject.GetComponent<PlayerBehavior>().RemoveInteractionDisabler(triggerId);
     }
 
