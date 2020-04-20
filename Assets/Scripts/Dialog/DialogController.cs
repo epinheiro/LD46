@@ -143,7 +143,7 @@ public class DialogController : MonoBehaviour
         }
         if (sequenceId == "caught")
         {
-            SceneManager.LoadScene("Level1Scene");
+            EndGameOutro();
         }
         if (sequenceId == "peasant1")
         {
@@ -162,6 +162,15 @@ public class DialogController : MonoBehaviour
         }
         if (sequenceId == "rebel" || sequenceId == "rebellose")
         {
+            EndGameOutro();
+        }
+    }
+
+    void EndGameOutro(bool showCredits = false){
+        if(!showCredits){
+            SceneManager.LoadScene("Level1Scene");
+        }else{
+            // TODO - change to also show about screen
             SceneManager.LoadScene("Level1Scene");
         }
     }
