@@ -162,5 +162,6 @@ public class EnemyController : MonoBehaviour
     void CaughtPlayerEvent(){
         Debug.Log(string.Format("Enemy {0} caught player", this.name));
         virtualCamera.Priority = 100;
+        Camera.main.GetComponent<OutlineTrigger>().SetActiveOutline(false);
     }
 }

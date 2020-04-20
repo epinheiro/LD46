@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour {
     public void activateCharacter ()
     {
         characterActive = true;
+        Camera.main.GetComponent<OutlineTrigger>().SetActiveOutline(true);
     }
 
     public void deactivateCharacter()
