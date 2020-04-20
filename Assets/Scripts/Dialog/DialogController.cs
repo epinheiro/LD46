@@ -14,13 +14,14 @@ public class DialogController : MonoBehaviour
     List<Dialog> dialogFlow;
     int totalOfDialogs;
     int currentDialogIndex = 0;
+    private bool endDialogue = false;
 
 
     // Unity Scene objects
     public DialogCanvasController dialogCanvasController;
     Sequence dialogSequence;
     GameManager gameManager;
-    //GameObject playerObject;
+    PlayerController playerController;
     public PlayableDirector playableDirector;
 
 
@@ -28,6 +29,7 @@ public class DialogController : MonoBehaviour
     public string sequenceId;
     public bool isAutomatic = false;
     public bool selfDestroyAfterInteraction = false;
+ 
 
 
     // Start is called before the first frame update
@@ -38,7 +40,8 @@ public class DialogController : MonoBehaviour
         dialogSequence = gameManager.dialogModel.GetSequenceById(sequenceId);
         dialogFlow = dialogSequence.GetDialogFlow();
         totalOfDialogs = dialogFlow.Count;
-       
+
+        playerController = GameObject.Find("GameManager").GetComponentInChildren<PlayerController>();
         //dialogCanvasController = GameObject.Find("GameManager").GetCo.GetComponentInChildren<DialogCanvasController>();
         //if (dialogCanvasController == null) throw new System.Exception("DialogCanvas game object not found in Unity scene");
         //dialogCanvasController.SetActive(false);
@@ -48,6 +51,7 @@ public class DialogController : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
+        if (endDialogue) return;
         if (currentState == DialogBoxStates.SendText){
             ShowDialogText();
         } else {
@@ -71,8 +75,9 @@ public class DialogController : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if (other.tag == "Player" ) {
             FocusOnDialog();
+            GetComponent<BoxCollider>().enabled = false;
         }
-        GetComponent<BoxCollider>().enabled = false;
+        
     }
 
     // Posible coroutines
@@ -101,6 +106,7 @@ public class DialogController : MonoBehaviour
     public void FocusOnDialog(){
         dialogCanvasController.SetActive(true);
         //playerObject.GetComponent<PlayerBehavior>().AddInteractionDisabler(triggerId);
+        playerController.deactivateCharacter();
         currentState = DialogBoxStates.SendText;
         if (playableDirector != null)
         {
@@ -110,6 +116,9 @@ public class DialogController : MonoBehaviour
 
     void UnfocusOnDialog() {
         dialogCanvasController.SetActive(false);
+        endDialogue = true;
+
+
         if (playableDirector != null)
         {
             playableDirector.Play();
@@ -121,6 +130,7 @@ public class DialogController : MonoBehaviour
         if (sequenceId == "peasant1")
         {
             gameManager.peasant1 = true;
+            playerController.activateCharacter();
         }
         if (sequenceId == "peasant2")
         {

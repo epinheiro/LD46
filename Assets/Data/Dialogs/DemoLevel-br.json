@@ -27,7 +27,16 @@
                         "name": "Knight",
                         "mood": "serious"
                     },
-                    "text": "This is greater than you or I. The people must know the truth. Our only hope is for you to reach the rebel camp.",
+                    "text": "This is greater than you or I. The people must know the truth.",
+                    "nextId": "intro-35"
+                },
+                {
+                    "id" : "intro-35" ,
+                    "character" : {
+                        "name": "Knight",
+                        "mood": "serious"
+                    },
+                    "text": "Our only hope is for you to reach the rebel camp.",
                     "nextId": "intro-4"
                 },
                 {
@@ -36,7 +45,16 @@
                         "name": "Knight",
                         "mood": "serious"
                     },
-                    "text": "You must cross the city and find the rebels in the forest beyond. Remember, the city watch is looking for you.",
+                    "text": "You must cross the city and find the rebels in the forest beyond.",
+                    "nextId": "intro-45"
+                },
+                {
+                    "id" : "intro-45" ,
+                    "character" : {
+                        "name": "Knight",
+                        "mood": "serious"
+                    },
+                    "text": "Remember, the city watch is looking for you.",
                     "nextId": "intro-5"
                 },
                 {
@@ -90,7 +108,25 @@
                         "name": "Peasant",
                         "mood": "serious"
                     },
-                    "text": "Well, I'm just glad someone is helping out the rebels. The king is skinning us alive! Only last year, they took my son... But you must go, you must leave the city before dawn."
+                    "text": "Well, I'm just glad someone is helping out the rebels.",
+                    "nextId": "peasant1-4"
+                },
+                {
+                    "id" : "peasant1-4" ,
+                    "character" : {
+                        "name": "Peasant",
+                        "mood": "serious"
+                    },
+                    "text": "The king is skinning us alive! Only last year, they took my son...",
+                    "nextId": "peasant1-5"
+                },
+                {
+                    "id" : "peasant1-5" ,
+                    "character" : {
+                        "name": "Peasant",
+                        "mood": "serious"
+                    },
+                    "text": "But you must go, you must leave the city before dawn."
                 }
             ]
         }        
