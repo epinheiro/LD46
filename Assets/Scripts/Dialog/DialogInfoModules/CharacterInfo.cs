@@ -2,7 +2,7 @@ using System;
 
 [System.Serializable]
 public class CharacterInfo {
-    public enum AvailableCharacters {Prisoner, Knight}
+    public enum AvailableCharacters {Prisoner, Knight, Peasant}
     public enum AvailableMoods {serious, happy, sad}
 
     public string name = "";

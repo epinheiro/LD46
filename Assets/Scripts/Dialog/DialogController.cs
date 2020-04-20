@@ -69,9 +69,10 @@ public class DialogController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        //if (GameObject.ReferenceEquals(other.gameObject, playerObject) && isAutomatic ) {
+        if (other.tag == "Player" ) {
             FocusOnDialog();
-        //}
+        }
+        GetComponent<BoxCollider>().enabled = false;
     }
 
     // Posible coroutines

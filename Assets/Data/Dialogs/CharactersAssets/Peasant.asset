@@ -17,5 +17,5 @@ MonoBehaviour:
   angrySprite: {fileID: 0}
   happySprite: {fileID: 0}
   sadSprite: {fileID: 0}
-  seriousSprite: {fileID: 0}
+  seriousSprite: {fileID: 21300000, guid: e0061501b52d7c447a9b0d1ac14c8bdb, type: 3}
   surprisedSprite: {fileID: 0}
