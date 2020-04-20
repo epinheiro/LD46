@@ -21,7 +21,7 @@ public class PlayerTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // player = GameObject.Find("Player");
+        player = GameObject.Find("Character");
     }
 
     // Update is called once per frame
