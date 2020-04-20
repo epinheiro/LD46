@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class DialogController : MonoBehaviour
 {
@@ -112,7 +113,10 @@ public class DialogController : MonoBehaviour
         {
             playableDirector.Play();
         }
-        //playerObject.GetComponent<PlayerBehavior>().RemoveInteractionDisabler(triggerId);
+        if (sequenceId == "caught")
+        {
+            SceneManager.LoadScene("Level1Scene");
+        }
     }
 
 }

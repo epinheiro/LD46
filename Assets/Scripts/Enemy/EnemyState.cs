@@ -27,7 +27,7 @@ public class EnemyState
                 break;
 
             case State.Pursuit:
-                SetUpStruct(25, 1440, new Vector3(200,200,600));
+                SetUpStruct(30, 1440, new Vector3(200,200,600));
                 break;
 
             case State.CloseSearch:
