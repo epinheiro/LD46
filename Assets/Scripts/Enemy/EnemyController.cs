@@ -54,6 +54,8 @@ public class EnemyController : MonoBehaviour
         virtualCamera = gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
 
         animator = gameObject.GetComponent<Animator>();
+
+        animator.Play("idle");
     }
 
     // Update is called once per frame
