@@ -62,13 +62,15 @@ public class OutlineEffectController : MonoBehaviour
 
         int childCount = tested.transform.childCount;
 
-         if(childCount != 0){
+        if(childCount != 0){
             for( int i=0; i<childCount; i++){
-                return GetRenderer(tested.transform.GetChild(i).gameObject);
+                Renderer innerRenderer =  GetRenderer(tested.transform.GetChild(i).gameObject);
+                if(innerRenderer!=null) return innerRenderer;
             }
+            return null;
+        }else{
+            throw new System.Exception(string.Format("Object {0} does not have any renderer in all components and childs", this.name));
         }
-
-        throw new System.Exception(string.Format("Object {0} does not have any renderer in all components and childs", this.name));
     }
 
     // http://wiki.unity3d.com/index.php?title=IsVisibleFrom&_ga=2.234151766.913360.1587213094-1189076746.1553032315
