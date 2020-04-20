@@ -16,7 +16,7 @@ public class EnterHouse : MonoBehaviour
     void OnTriggerEnter(Collider other)        
     {
         if (other.tag != "Player") return;
-        Debug.Log("enter collider");
+        //Debug.Log("enter collider");
         collided += 1;
         roof.SetActive(false);
     }
@@ -24,7 +24,7 @@ public class EnterHouse : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         if (other.tag != "Player") return;
-        Debug.Log("exit collider");
+        //Debug.Log("exit collider");
         collided -= 1;
         if (collided <= 0)
             roof.SetActive(true);
