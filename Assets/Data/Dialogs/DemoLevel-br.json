@@ -187,6 +187,225 @@
                     "text": "I'm sorry..."
                 }
             ]
+        },
+        {
+            "id": "peasant3",
+            "dialogs": [
+                {
+                    "id" : "peasant3-1" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "You must know the truth, the king is using those who go north as slaves.",
+                    "nextId": "peasant3-2"
+                },
+                {
+                    "id" : "peasant3-2" ,
+                    "character" : {
+                        "name": "Peasant",
+                        "mood": "serious"
+                    },
+                    "text": "Look, I don't really care...",
+                    "nextId": "peasant3-3"
+                },
+                {
+                    "id" : "peasant3-3" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "But this is important, please, spread this information, I have proof.",
+                    "nextId": "peasant3-4"
+                },
+                {
+                    "id" : "peasant3-4" ,
+                    "character" : {
+                        "name": "Peasant",
+                        "mood": "serious"
+                    },
+                    "text": "Well, I will see what I can do."
+                }
+            ]
+        },
+        {
+            "id": "rebel",
+            "dialogs": [
+                {
+                    "id" : "rebel-1" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "We're glad to see you've reached the camp in one piece.",
+                    "nextId": "rebel-15"
+                },
+                {
+                    "id" : "rebel-15" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "And managed not to bring the city guard on your tail!",
+                    "nextId": "rebel-2"
+                },
+                {
+                    "id" : "rebel-2" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "Not exactly an easy task, you could've sent an escort.",
+                    "nextId": "rebel-3"
+                },
+                {
+                    "id" : "rebel-3" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "We helped where we could, didn't you miss the forest patrols?",
+                    "nextId": "rebel-4"
+                },
+                {
+                    "id" : "rebel-4" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "Besides, we couldn't risk direct contact with a possible double agent.",
+                    "nextId": "rebel-5"
+                },
+                {
+                    "id" : "rebel-5" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "Good to know I'm trusted around here. I even managed to inform the city folk of the king's plots.",
+                    "nextId": "rebel-6"
+                },
+                {
+                    "id" : "rebel-6" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "Well, maybe now they'll send some supplies to help the cause. I wouldn't count on it though.",
+                    "nextId": "rebel-7"
+                },
+                {
+                    "id" : "rebel-7" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "No royal scheme is terrible enough that they won't forget after a good feast, paid for by the king.",
+                    "nextId": "rebel-8"
+                },
+                {
+                    "id" : "rebel-8" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "Well, I tried... But most importantly, here are the maps and the evidence you needed.",
+                    "nextId": "rebel-9"
+                },
+                {
+                    "id" : "rebel-9" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "Your effort is much appreciated. This will change the tide of the rebellion."
+                }
+            ]
+        },
+        {
+            "id": "rebellose",
+            "dialogs": [
+                {
+                    "id" : "rebellose-1" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "We're glad to see you've reached the camp in one piece.",
+                    "nextId": "rebellose-15"
+                },
+                {
+                    "id" : "rebellose-15" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "And managed not to bring the city guard on your tail!",
+                    "nextId": "rebellose-2"
+                },
+                {
+                    "id" : "rebellose-2" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "Not exactly an easy task, you could've sent an escort.",
+                    "nextId": "rebellose-3"
+                },
+                {
+                    "id" : "rebellose-3" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "We helped where we could, didn't you miss the forest patrols?",
+                    "nextId": "rebellose-4"
+                },
+                {
+                    "id" : "rebellose-4" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "Besides, we couldn't risk direct contact with a possible double agent.",
+                    "nextId": "rebellose-5"
+                },
+                {
+                    "id" : "rebellose-5" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "Good to know I'm trusted around here. Sadly, I didn't talk to many people about the king scheme.",
+                    "nextId": "rebellose-6"
+                },
+                {
+                    "id" : "rebellose-6" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "Oh, we need all the help we can get. I'm not sure if we are going to survive alone.",
+                    "nextId": "rebellose-8"
+                },
+                {
+                    "id" : "rebellose-8" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "Well, I tried... But most importantly, here are the maps and the evidence you needed.",
+                    "nextId": "rebellose-9"
+                },
+                {
+                    "id" : "rebellose-9" ,
+                    "character" : {
+                        "name": "Rebel",
+                        "mood": "serious"
+                    },
+                    "text": "Your effort is much appreciated. This will probably not be enough, but it may help."
+                }
+            ]
         }
     ]
 }

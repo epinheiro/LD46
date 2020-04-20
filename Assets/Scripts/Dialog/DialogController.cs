@@ -104,6 +104,24 @@ public class DialogController : MonoBehaviour
     }
 
     public void FocusOnDialog(){
+        if (sequenceId == "rebel")
+        {
+            int count = 0;
+            count += gameManager.peasant1 ? 1 : 0;
+            count += gameManager.peasant2 ? 1 : 0;
+            count += gameManager.peasant3 ? 1 : 0;
+            if (count < 2)
+            {
+                sequenceId = "rebellose";
+                dialogSequence = gameManager.dialogModel.GetSequenceById(sequenceId);
+                dialogFlow = dialogSequence.GetDialogFlow();
+                totalOfDialogs = dialogFlow.Count;
+            }
+        }
+
+
+
+
         dialogCanvasController.SetActive(true);
         //playerObject.GetComponent<PlayerBehavior>().AddInteractionDisabler(triggerId);
         playerController.deactivateCharacter();
@@ -135,10 +153,16 @@ public class DialogController : MonoBehaviour
         if (sequenceId == "peasant2")
         {
             gameManager.peasant2 = true;
+            playerController.activateCharacter();
         }
         if (sequenceId == "peasant3")
         {
             gameManager.peasant3 = true;
+            playerController.activateCharacter();
+        }
+        if (sequenceId == "rebel" || sequenceId == "rebellose")
+        {
+            SceneManager.LoadScene("Level1Scene");
         }
     }
 
