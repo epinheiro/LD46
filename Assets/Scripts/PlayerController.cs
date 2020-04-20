@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
             }
         } else if (characterActive)
         {
-            Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            Move(-Input.GetAxis("Horizontal"), -Input.GetAxis("Vertical"));
         }
 
 
