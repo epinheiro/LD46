@@ -52,8 +52,9 @@ public class MainMenuController : MonoBehaviour
         }
 
         aboutGroup.SetActive(true);
-        Button bt = aboutGroup.transform.Find("Holder").GetComponent<Button>();
-        
+        Button bt = aboutGroup.transform.Find("ReturnButton").GetComponent<Button>();
+        bt.enabled = true;
+
         bt.onClick.RemoveAllListeners();
         bt.onClick.AddListener(delegate(){callback();});
     }

@@ -174,7 +174,7 @@ public class DialogController : MonoBehaviour
         }
     }
 
-    public void ReloadScene(){
+    static public void ReloadScene(){
         SceneManager.LoadScene("Level1Scene");
     }
 
