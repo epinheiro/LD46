@@ -76,15 +76,15 @@ public class HeartBeatController : MonoBehaviour
     }
 
     void ChangeBeat(int nextBeat){
-        if(currentBeat != nextBeat){
-
+        if(!source.isPlaying && currentBeat != nextBeat){
+            currentBeat = nextBeat;
+            HeartBeat beat = beats[currentBeat];
+            source.clip = beat.beat;
         }
     }
 
     void PlayBeat(){
         if(!source.isPlaying){
-            HeartBeat beat = beats[currentBeat];
-            source.clip = beat.beat;
             source.Play();
         }
     }
