@@ -162,17 +162,20 @@ public class DialogController : MonoBehaviour
         }
         if (sequenceId == "rebel" || sequenceId == "rebellose")
         {
-            EndGameOutro();
+            EndGameOutro(true);
         }
     }
 
     void EndGameOutro(bool showCredits = false){
         if(!showCredits){
-            SceneManager.LoadScene("Level1Scene");
+            ReloadScene();
         }else{
-            // TODO - change to also show about screen
-            SceneManager.LoadScene("Level1Scene");
+            GameObject.Find("MainMenuCanvas").GetComponent<MainMenuController>().ActivateEndGameCredits(ReloadScene);
         }
+    }
+
+    public void ReloadScene(){
+        SceneManager.LoadScene("Level1Scene");
     }
 
 }

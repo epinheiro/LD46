@@ -40,6 +40,24 @@ public class MainMenuController : MonoBehaviour
         Application.Quit();
     }
 
+    public delegate void BasicAction();
+
+    public void ActivateEndGameCredits(BasicAction callback){
+        List<CanvasRenderer> canvasList = new List<CanvasRenderer>();
+        ListCanvasRendererRecursive(this.gameObject, canvasList);
+
+        foreach(CanvasRenderer cr in canvasList){
+            float alpha = cr.GetAlpha();
+            cr.SetAlpha(1);
+        }
+
+        aboutGroup.SetActive(true);
+        Button bt = aboutGroup.transform.Find("Holder").GetComponent<Button>();
+        
+        bt.onClick.RemoveAllListeners();
+        bt.onClick.AddListener(delegate(){callback();});
+    }
+
     void StartFadeOutMenu(){
         StartCoroutine(FadeOutMenu());
     }
@@ -64,6 +82,7 @@ public class MainMenuController : MonoBehaviour
     void FadeEnding(){
         mainMenuGrop.SetActive(false);
         aboutGroup.SetActive(false);
+        this.GetComponent<AudioSource>().Stop();
     }
 
     IEnumerator FadeOutMenu(float time = .75f){
