@@ -21,7 +21,6 @@ public class MainMenuController : MonoBehaviour
     }
 
     public void OnClickBeginButton(){
-        Debug.LogError("NYI - Begin button pressed");
         playableDirector.Play();
         ambientSound.GetComponent<AudioSource>().Play();
         this.gameObject.SetActive(false);
