@@ -71,6 +71,6 @@ public class DialogCanvasController : MonoBehaviour
         image_char.sprite = charAsset.GetSpriteByMood(charInfo.mood);
         //mask_char.sprite = TODO
 
-        Camera.main.GetComponent<AudioSource>().PlayOneShot(charAsset.defaultTextSound, 0.1F); // TODO verify echo effect in multiple character sounds in sequence
+        //Camera.main.GetComponent<AudioSource>().PlayOneShot(charAsset.defaultTextSound, 0.1F); // TODO verify echo effect in multiple character sounds in sequence
     }
 }

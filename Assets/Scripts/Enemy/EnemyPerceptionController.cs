@@ -28,7 +28,6 @@ public class EnemyPerceptionController : MonoBehaviour
     }
 
     void OnTriggerExit(Collider other){
-        //Debug.Log("Trigger exiting");
         if(other.tag == "Player"){
             enemy.SetPlayerDetection(false);
         }
