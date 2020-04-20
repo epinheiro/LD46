@@ -23,8 +23,7 @@ public class MainMenuController : MonoBehaviour
     public void OnClickBeginButton(){
         playableDirector.Play();
         ambientSound.GetComponent<AudioSource>().Play();
-        this.gameObject.SetActive(false);
-
+        StartFadeOutMenu();
     }
 
     public void OnClickOpenAboutButton(){
@@ -63,7 +62,8 @@ public class MainMenuController : MonoBehaviour
     }
 
     void FadeEnding(){
-        Destroy(this.gameObject);
+        mainMenuGrop.SetActive(false);
+        aboutGroup.SetActive(false);
     }
 
     IEnumerator FadeOutMenu(float time = .75f){
