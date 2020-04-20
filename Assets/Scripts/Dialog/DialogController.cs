@@ -15,6 +15,7 @@ public class DialogController : MonoBehaviour
     int totalOfDialogs;
     int currentDialogIndex = 0;
     private bool endDialogue = false;
+    private bool disabled = false;
 
 
     // Unity Scene objects
@@ -73,9 +74,10 @@ public class DialogController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
+        if (disabled) return;
         if (other.tag == "Player" ) {
             FocusOnDialog();
-            GetComponent<BoxCollider>().enabled = false;
+            disabled = true;
         }
         
     }
