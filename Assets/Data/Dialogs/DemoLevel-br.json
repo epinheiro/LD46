@@ -129,6 +129,64 @@
                     "text": "But you must go, you must leave the city before dawn."
                 }
             ]
-        }        
+        },
+        {
+            "id": "peasant2",
+            "dialogs": [
+                {
+                    "id" : "peasant2-1" ,
+                    "character" : {
+                        "name": "Peasant",
+                        "mood": "serious"
+                    },
+                    "text": "Traitor! Why the hell do you want to help those filthy rebels?",
+                    "nextId": "peasant2-2"
+                },
+                {
+                    "id" : "peasant2-2" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "The king cares only about his well being.",
+                    "nextId": "peasant2-3"
+                },
+                {
+                    "id" : "peasant2-3" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "He'd sell your soul to the devil if that could bring him some benefit.",
+                    "nextId": "peasant2-4"
+                },
+                {
+                    "id" : "peasant2-4" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "He even uses the sons of his people as slaves in the northern mines! Look, I can prove it!",
+                    "nextId": "peasant2-5"
+                },
+                {
+                    "id" : "peasant2-5" ,
+                    "character" : {
+                        "name": "Peasant",
+                        "mood": "serious"
+                    },
+                    "text": "This is horrifying. My nephew went to the north, they said he had the prospect of a better life.",
+                    "nextId": "peasant2-6"
+                },
+                {
+                    "id" : "peasant2-6",
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "I'm sorry..."
+                }
+            ]
+        }
     ]
 }
