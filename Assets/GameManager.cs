@@ -5,9 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public DialogModel dialogModel;
-    private bool peasant1 { get; set; }
-    private bool peasant2 { get; set; }
-    private bool peasant3 { get; set; }
+    public bool peasant1 { get; set; }
+    public bool peasant2 { get; set; }
+    public bool peasant3 { get; set; }
+    
 
     void Awake()
     {

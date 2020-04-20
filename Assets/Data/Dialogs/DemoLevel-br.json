@@ -9,7 +9,7 @@
                         "name": "Knight",
                         "mood": "serious"
                     },
-                    "text": "So, I'm letting you escape for now since I know you are telling the truth",
+                    "text": "So, this is where we part ways. I'm sorry I can't help you further.",
                     "nextId": "intro-2"
                 },
                 {
@@ -18,7 +18,7 @@
                         "name": "Prisoner",
                         "mood": "serious"
                     },
-                    "text": "Thank you for believing me. I didn't kill the peasant, it was the noble's man!",
+                    "text": "I wouldn't have left the castle if it weren't for you...",
                     "nextId": "intro-3"
                 },
                 {
@@ -27,16 +27,16 @@
                         "name": "Knight",
                         "mood": "serious"
                     },
-                    "text": "I know, I've seen it, but I can't tell anyone or else I will be killed for treason against the nobility.",
+                    "text": "This is greater than you or I. The people must know the truth. Our only hope is for you to reach the rebel camp.",
                     "nextId": "intro-4"
                 },
                 {
                     "id" : "intro-4" ,
                     "character" : {
-                        "name": "Prisoner",
+                        "name": "Knight",
                         "mood": "serious"
                     },
-                    "text": "What can I do about this?",
+                    "text": "You must cross the city and find the rebels in the forest beyond. Remember, the city watch is looking for you.",
                     "nextId": "intro-5"
                 },
                 {
@@ -45,26 +45,9 @@
                         "name": "Knight",
                         "mood": "serious"
                     },
-                    "text": "Just flee and try to collect evidence if you can, the noble must pay for his crimes.",
-                    "nextId": "intro-6"
-                },
-                {
-                    "id" : "intro-6" ,
-                    "character" : {
-                        "name": "Knight",
-                        "mood": "serious"
-                    },
-                    "text": "Don't let the guards see you, run through the city and forest.",
-                    "nextId": "intro-7"
-                },
-                {
-                    "id" : "intro-7" ,
-                    "character" : {
-                        "name": "Knight",
-                        "mood": "serious"
-                    },
-                    "text": "Keep the truth alive!"
+                    "text": "Keep the truth alive!"          
                 }
+               
             ]
         },
         {
@@ -79,7 +62,37 @@
                     "text": "Here's our traitor. You won't get away as easily this time."
                 }
             ]
-        }
-        
+        },
+        {
+            "id": "peasant1",
+            "dialogs": [
+                {
+                    "id" : "peasant1-1" ,
+                    "character" : {
+                        "name": "Peasant",
+                        "mood": "serious"
+                    },
+                    "text": "Are you the tr...",
+                    "nextId": "peasant1-2"
+                },
+                {
+                    "id" : "peasant1-2" ,
+                    "character" : {
+                        "name": "Prisoner",
+                        "mood": "serious"
+                    },
+                    "text": "Do you really need to ask?",
+                    "nextId": "peasant1-3"
+                },
+                {
+                    "id" : "peasant1-3" ,
+                    "character" : {
+                        "name": "Peasant",
+                        "mood": "serious"
+                    },
+                    "text": "Well, I'm just glad someone is helping out the rebels. The king is skinning us alive! Only last year, they took my son... But you must go, you must leave the city before dawn."
+                }
+            ]
+        }        
     ]
 }

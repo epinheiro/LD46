@@ -117,6 +117,18 @@ public class DialogController : MonoBehaviour
         {
             SceneManager.LoadScene("Level1Scene");
         }
+        if (sequenceId == "peasant1")
+        {
+            gameManager.peasant1 = true;
+        }
+        if (sequenceId == "peasant2")
+        {
+            gameManager.peasant2 = true;
+        }
+        if (sequenceId == "peasant3")
+        {
+            gameManager.peasant3 = true;
+        }
     }
 
 }
