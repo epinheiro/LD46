@@ -8,6 +8,7 @@ TagManager:
   - EnemyOutline
   - PlayerOutline
   - DoorwayOutline
+  - PeasantOutilne
   layers:
   - Default
   - TransparentFX
