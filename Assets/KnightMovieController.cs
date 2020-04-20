@@ -47,7 +47,7 @@ public class KnightMovieController : MonoBehaviour
         Vector3 direction = transform.position + new Vector3(horizontal, 0, vertical);
         transform.Translate(CalculateSpeed(horizontal), 0, CalculateSpeed(vertical), Space.World);
         transform.LookAt(direction);
-        Debug.Log("Horitzontal: " +  horizontal + "Vertical :" + vertical);
+        //Debug.Log("Horitzontal: " +  horizontal + "Vertical :" + vertical);
         if (horizontal == 0 && vertical == 0)
         {
             animator.Play("idle");

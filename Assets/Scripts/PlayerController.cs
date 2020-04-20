@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour {
     public float acceleration = 5f;
     public Transform characterTransform;
     private Animator animator;
-    private Camera theCamera;
     private Vector3 moveToPosition;
     private bool moveScene = false;
     private bool characterActive = false;
@@ -17,7 +16,6 @@ public class PlayerController : MonoBehaviour {
     void Start() {
        // characterRigidBody = GetComponentInChildren<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
-        theCamera = GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
@@ -45,6 +43,12 @@ public class PlayerController : MonoBehaviour {
     public void activateCharacter ()
     {
         characterActive = true;
+    }
+
+    public void deactivateCharacter()
+    {
+        characterActive = false;
+        animator.Play("idle");
     }
 
     public bool MoveSceneValue()

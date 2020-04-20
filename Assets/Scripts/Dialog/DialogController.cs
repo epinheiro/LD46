@@ -37,10 +37,10 @@ public class DialogController : MonoBehaviour
         dialogSequence = gameManager.dialogModel.GetSequenceById(sequenceId);
         dialogFlow = dialogSequence.GetDialogFlow();
         totalOfDialogs = dialogFlow.Count;
-
-        //dialogCanvasController = GameObject.Find("DialogCanvas").GetComponent<DialogCanvasController>();
-        if (dialogCanvasController == null) throw new System.Exception("DialogCanvas game object not found in Unity scene");
-
+       
+        //dialogCanvasController = GameObject.Find("GameManager").GetCo.GetComponentInChildren<DialogCanvasController>();
+        //if (dialogCanvasController == null) throw new System.Exception("DialogCanvas game object not found in Unity scene");
+        //dialogCanvasController.SetActive(false);
         //playerObject = GameObject.Find("Player");
         //if (playerObject == null) throw new System.Exception("Player game object not found in Unity scene");
     }
@@ -100,12 +100,18 @@ public class DialogController : MonoBehaviour
         dialogCanvasController.SetActive(true);
         //playerObject.GetComponent<PlayerBehavior>().AddInteractionDisabler(triggerId);
         currentState = DialogBoxStates.SendText;
-        playableDirector.Pause();
+        if (playableDirector != null)
+        {
+            playableDirector.Pause();
+        }
     }
 
-    void UnfocusOnDialog(){
+    void UnfocusOnDialog() {
         dialogCanvasController.SetActive(false);
-        playableDirector.Play();
+        if (playableDirector != null)
+        {
+            playableDirector.Play();
+        }
         //playerObject.GetComponent<PlayerBehavior>().RemoveInteractionDisabler(triggerId);
     }
 

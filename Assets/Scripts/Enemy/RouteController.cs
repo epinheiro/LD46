@@ -20,6 +20,7 @@ public class RouteController : MonoBehaviour
         
         for ( int i=0; i<childCount; i++ ) {
             route[i] = this.transform.GetChild(i).transform.position;
+            //Debug.Log(i);
         }
 
         currentRoutePoint = 0;

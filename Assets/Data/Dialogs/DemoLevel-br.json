@@ -66,6 +66,19 @@
                     "text": "Keep the truth alive!"
                 }
             ]
+        },
+        {
+            "id": "caught",
+            "dialogs": [
+                {
+                    "id" : "caught-1" ,
+                    "character" : {
+                        "name": "Knight",
+                        "mood": "serious"
+                    },
+                    "text": "Here's our traitor. You won't get away as easily this time."
+                }
+            ]
         }
         
     ]
