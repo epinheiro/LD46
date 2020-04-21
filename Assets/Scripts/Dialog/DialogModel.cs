@@ -57,7 +57,6 @@ public class DialogModel
         // https://docs.unity3d.com/ScriptReference/AssetDatabase.LoadAssetAtPath.html
         try {
             TextAsset textFile = Resources.Load<TextAsset>("Dialogs/DemoLevel-br");
-            Debug.Log("textfi;e " + textFile);
             //TextAsset textFile = (TextAsset) AssetDatabase.LoadAssetAtPath(path, typeof(TextAsset));
             return textFile.ToString();
         } catch (Exception e)
