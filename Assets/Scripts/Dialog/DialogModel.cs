@@ -56,10 +56,13 @@ public class DialogModel
     protected string GetTextFile(string path) {
         // https://docs.unity3d.com/ScriptReference/AssetDatabase.LoadAssetAtPath.html
         try {
-            TextAsset textFile = (TextAsset) AssetDatabase.LoadAssetAtPath(path, typeof(TextAsset));
+            TextAsset textFile = Resources.Load<TextAsset>("Dialogs/DemoLevel-br");
+            Debug.Log("textfi;e " + textFile);
+            //TextAsset textFile = (TextAsset) AssetDatabase.LoadAssetAtPath(path, typeof(TextAsset));
             return textFile.ToString();
-        } catch {
-            throw new System.IO.FileNotFoundException(string.Format("File not found in {0}", path));
+        } catch (Exception e)
+        {
+            throw e;
         }
     }
 

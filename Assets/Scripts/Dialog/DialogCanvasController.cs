@@ -7,7 +7,7 @@ using UnityEditor;
 public class DialogCanvasController : MonoBehaviour
 {
 
-    const string charactersAssetsPath = "Assets/Data/Dialogs/CharactersAssets/";
+    const string charactersAssetsPath = "Dialogs/CharactersAssets/";
     const string fileExtension = ".asset";
 
     Text text_name;
@@ -30,7 +30,8 @@ public class DialogCanvasController : MonoBehaviour
     protected UnityEngine.Object loadAssets<T>(string characterName){
         if (!CharacterInfo.IsCharacterNameValid(characterName)) throw new System.Exception(string.Format("Character {0} is not valid", characterName));
         
-        Object go = AssetDatabase.LoadAssetAtPath(string.Format("{0}{1}{2}", charactersAssetsPath, characterName, fileExtension), typeof(T));
+        Object go = Resources.Load<CharacterDialogAssets>(string.Format("{0}{1}", charactersAssetsPath, characterName));
+        Debug.Log("Path " + string.Format("{0}{1}", charactersAssetsPath, characterName));
 
         if (go == null) throw new System.Exception(string.Format("{0} character without {1} file", characterName, typeof(T).Name));
 
@@ -47,7 +48,7 @@ public class DialogCanvasController : MonoBehaviour
         text_name.text = "Condescendenting Bida";
         text_line.text = "I guess it worked, champ";
         image_char.sprite = bidaAsset.happySprite;
-        mask_char.sprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd"); // THIS will be removed eventually by something as bidaAsset.maskXXX
+        //mask_char.sprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background"); // THIS will be removed eventually by something as bidaAsset.maskXXX
     }
 
     public void setDialog(Dialog dialog){
