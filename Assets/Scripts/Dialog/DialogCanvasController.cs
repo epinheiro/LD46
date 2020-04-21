@@ -14,6 +14,9 @@ public class DialogCanvasController : MonoBehaviour
     Text text_line;
     Image image_char;
     Image mask_char;
+    AudioSource source;
+    public List<AudioClip> whispers;
+    int currentWhisper = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,8 @@ public class DialogCanvasController : MonoBehaviour
         image_char = panel.transform.GetChild(1).GetChild(0).GetComponent<Image>();
         text_name = panel.transform.GetChild(2).GetComponent<Text>();
         text_line = panel.transform.GetChild(3).GetComponent<Text>();
+        
+        source = this.GetComponent<AudioSource>();
 
         this.SetActive(false);
     }
@@ -72,6 +77,19 @@ public class DialogCanvasController : MonoBehaviour
         image_char.sprite = charAsset.GetSpriteByMood(charInfo.mood);
         //mask_char.sprite = TODO
 
-        //Camera.main.GetComponent<AudioSource>().PlayOneShot(charAsset.defaultTextSound, 0.1F); // TODO verify echo effect in multiple character sounds in sequence
+        PlayRandomWhisper();
+        // source.PlayOneShot(charAsset.defaultTextSound, 0.1F); // TODO verify echo effect in multiple character sounds in sequence
+    }
+
+    public void PlayRandomWhisper() {
+        if(!source.isPlaying) {
+            var random = new System.Random();
+            int nextWhisper = random.Next(whispers.Count);
+            if(currentWhisper != nextWhisper){
+                currentWhisper = nextWhisper;
+                source.clip = whispers[currentWhisper];
+                source.Play();
+            }
+        }
     }
 }

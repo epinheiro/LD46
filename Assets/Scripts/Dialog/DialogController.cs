@@ -55,6 +55,7 @@ public class DialogController : MonoBehaviour
         if (endDialogue) return;
         if (currentState == DialogBoxStates.SendText){
             ShowDialogText();
+            // dialogCanvasController.PlayRandomWhisper();
         } else {
             if (currentState == DialogBoxStates.WaitingUser && Input.GetButtonDown("Use")){ // TODO change key
                 currentDialogIndex++;
